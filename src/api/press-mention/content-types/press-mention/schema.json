@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "press_mentions",
+  "info": {
+    "singularName": "press-mention",
+    "pluralName": "press-mentions",
+    "displayName": "Press Mention"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
