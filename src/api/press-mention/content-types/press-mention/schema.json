@@ -4,7 +4,8 @@
   "info": {
     "singularName": "press-mention",
     "pluralName": "press-mentions",
-    "displayName": "Press Mention"
+    "displayName": "Press Mention",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,14 +19,12 @@
       "type": "richtext"
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

@@ -984,6 +984,7 @@ export interface ApiPressMentionPressMention extends Schema.CollectionType {
     singularName: 'press-mention';
     pluralName: 'press-mentions';
     displayName: 'Press Mention';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -991,7 +992,7 @@ export interface ApiPressMentionPressMention extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     body: Attribute.RichText;
-    thumbnail: Attribute.Media;
+    thumbnail: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
