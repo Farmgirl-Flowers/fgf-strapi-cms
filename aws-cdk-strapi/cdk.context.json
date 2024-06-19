@@ -2,5 +2,79 @@
   "hosted-zone:account=536448734625:domainName=farmgirlflowers.com:region=us-east-1": {
     "Id": "/hostedzone/Z3LDNGKWHDQC1R",
     "Name": "farmgirlflowers.com."
+  },
+  "vpc-provider:account=536448734625:filter.isDefault=true:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-eb834e8e",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "536448734625",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-b9a0a0ff",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-6b741d0e",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-09ddae0f407288c44",
+            "cidr": "172.31.124.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-077c7fb27eb2dfe18"
+          },
+          {
+            "subnetId": "subnet-387a5910",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-c99c7abe",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-0f72e9bda7b3007f1",
+            "cidr": "172.31.96.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-5715756d",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-d3d313b6"
+          },
+          {
+            "subnetId": "subnet-f60881fa",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-d3d313b6"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0cbc7f2030f2fc179",
+            "cidr": "172.31.123.0/24",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-01afcc98240690eb6"
+          }
+        ]
+      }
+    ]
   }
 }
