@@ -5,7 +5,7 @@ set -e
 # This script is used to reset the database with production data using Strapi's
 # CLI and the 1Password CLI.
 
-OP_ACCOUNT="farmgirl-flowers"
+OP_ACCOUNT="farmgirl-flowers.1password.com"
 OP_ITEM="Engineering/strapi-transfer-token-prod-pull-only"
 STRAPI_TRANSFER_TOKEN=$(op read op://${OP_ITEM}/credential --account "${OP_ACCOUNT}")
 STRAPI_FROM_URL=$(op read op://${OP_ITEM}/username --account "${OP_ACCOUNT}")

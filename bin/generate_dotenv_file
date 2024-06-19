@@ -4,7 +4,7 @@ set -e
 
 # This script is used to generate a .env file using the 1Password CLI.
 
-OP_ACCOUNT="farmgirl-flowers"
+OP_ACCOUNT="farmgirl-flowers.1password.com"
 OP_ITEM="Engineering/strapi-aws-prod"
 
 op_read() {
