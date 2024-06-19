@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_list_press_mentions",
+  "info": {
+    "displayName": "List Press Mentions",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "press_mentions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::press-mention.press-mention"
+    }
+  }
+}
