@@ -13,10 +13,15 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "unique": true
     },
     "body": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true,
+      "minLength": 1
     },
     "thumbnail": {
       "type": "media",
