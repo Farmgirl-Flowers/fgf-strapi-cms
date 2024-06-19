@@ -46,14 +46,9 @@ export interface ComponentsPressMentionsGrid extends Schema.Component {
   info: {
     displayName: 'Press Mentions Grid';
     icon: 'apps';
+    description: '';
   };
-  attributes: {
-    press_mentions: Attribute.Relation<
-      'components.press-mentions-grid',
-      'oneToMany',
-      'api::press-mention.press-mention'
-    >;
-  };
+  attributes: {};
 }
 
 export interface SharedMedia extends Schema.Component {
