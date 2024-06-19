@@ -2,12 +2,15 @@
   "collectionName": "components_components_content_blocks",
   "info": {
     "displayName": "Content Block",
-    "icon": "feather"
+    "icon": "feather",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "body": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true,
+      "minLength": 2
     },
     "textAlignment": {
       "type": "enumeration",

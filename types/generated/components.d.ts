@@ -5,11 +5,22 @@ export interface ComponentsButton extends Schema.Component {
   info: {
     displayName: 'Button';
     icon: 'cursor';
+    description: '';
   };
   attributes: {
-    label: Attribute.String;
-    url: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    type: Attribute.Enumeration<['primary', 'secondary']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'secondary'>;
   };
 }
 
@@ -18,9 +29,14 @@ export interface ComponentsContentBlock extends Schema.Component {
   info: {
     displayName: 'Content Block';
     icon: 'feather';
+    description: '';
   };
   attributes: {
-    body: Attribute.RichText;
+    body: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     textAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
       Attribute.Required &
       Attribute.DefaultTo<'left'>;
@@ -32,10 +48,16 @@ export interface ComponentsHeroHeader extends Schema.Component {
   info: {
     displayName: 'Hero Header';
     icon: 'landscape';
+    description: '';
   };
   attributes: {
-    backgroundImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Attribute.String;
+    backgroundImage: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+        maxLength: 180;
+      }>;
     tagline: Attribute.RichText;
     button: Attribute.Component<'components.button'>;
   };

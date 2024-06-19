@@ -2,22 +2,29 @@
   "collectionName": "components_components_buttons",
   "info": {
     "displayName": "Button",
-    "icon": "cursor"
+    "icon": "cursor",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "label": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 1
     },
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 1
     },
     "type": {
       "type": "enumeration",
       "enum": [
         "primary",
         "secondary"
-      ]
+      ],
+      "required": true,
+      "default": "secondary"
     }
   }
 }

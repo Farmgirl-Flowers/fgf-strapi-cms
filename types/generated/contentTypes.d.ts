@@ -374,7 +374,12 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 120;
+      }>;
     blocks: Attribute.DynamicZone<
       [
         'components.button',
@@ -390,7 +395,12 @@ export interface ApiPagePage extends Schema.CollectionType {
         },
         number
       >;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

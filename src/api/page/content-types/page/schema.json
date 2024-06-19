@@ -13,7 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "maxLength": 120,
+      "minLength": 2
     },
     "blocks": {
       "type": "dynamiczone",
@@ -30,7 +33,8 @@
       "type": "string",
       "required": true,
       "unique": true,
-      "regex": "[0-9a-z_-]+"
+      "regex": "[0-9a-z_-]+",
+      "minLength": 2
     }
   }
 }

@@ -2,22 +2,24 @@
   "collectionName": "components_components_hero_headers",
   "info": {
     "displayName": "Hero Header",
-    "icon": "landscape"
+    "icon": "landscape",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "backgroundImage": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "maxLength": 180,
+      "minLength": 1
     },
     "tagline": {
       "type": "richtext"
