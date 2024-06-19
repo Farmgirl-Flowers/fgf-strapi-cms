@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+source bin/shared/one_password
+
+function read_value() {
+  op_read op://Engineering/fgf-cms-db-prod/$1
+}
+
+PGHOST=$(read_value server)
+PGDATABASE=$(read_value database)
+PGUSER=$(read_value username)
+PGPORT=5432
+
+PGPASSWORD=$(read_value password) psql -h $PGHOST -U $PGUSER -d $PGDATABASE -p $PGPORT
