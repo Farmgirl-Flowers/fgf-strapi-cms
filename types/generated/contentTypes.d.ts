@@ -929,7 +929,8 @@ export interface ApiPagePage extends Schema.CollectionType {
       [
         'components.button',
         'components.content-block',
-        'components.hero-header'
+        'components.hero-header',
+        'components.press-mentions-grid'
       ]
     > &
       Attribute.Required &

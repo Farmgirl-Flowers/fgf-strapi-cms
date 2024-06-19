@@ -20,7 +20,8 @@
       "components": [
         "components.button",
         "components.content-block",
-        "components.hero-header"
+        "components.hero-header",
+        "components.press-mentions-grid"
       ],
       "required": true,
       "min": 1
