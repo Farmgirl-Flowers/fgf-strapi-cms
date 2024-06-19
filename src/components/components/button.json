@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_components_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    }
+  }
+}

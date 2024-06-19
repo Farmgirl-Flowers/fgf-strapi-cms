@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_components_content_blocks",
+  "info": {
+    "displayName": "Content Block",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext"
+    },
+    "textAlignment": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "default": "left",
+      "required": true
+    }
+  }
+}
