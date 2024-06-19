@@ -63,16 +63,6 @@ export interface ComponentsHeroHeader extends Schema.Component {
   };
 }
 
-export interface ComponentsPressMentionsGrid extends Schema.Component {
-  collectionName: 'components_components_press_mentions_grids';
-  info: {
-    displayName: 'Press Mentions Grid';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {};
-}
-
 export interface SharedMedia extends Schema.Component {
   collectionName: 'components_shared_media';
   info: {
@@ -141,7 +131,6 @@ declare module '@strapi/types' {
       'components.button': ComponentsButton;
       'components.content-block': ComponentsContentBlock;
       'components.hero-header': ComponentsHeroHeader;
-      'components.press-mentions-grid': ComponentsPressMentionsGrid;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

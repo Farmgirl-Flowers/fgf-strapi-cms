@@ -23,8 +23,7 @@
       "components": [
         "components.button",
         "components.content-block",
-        "components.hero-header",
-        "components.press-mentions-grid"
+        "components.hero-header"
       ],
       "required": true,
       "min": 1
