@@ -806,7 +806,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         maxLength: 80;
       }>;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    cover: Attribute.Media;
+    cover: Attribute.Media<'images' | 'files' | 'videos'>;
     author: Attribute.Relation<
       'api::article.article',
       'manyToOne',
@@ -851,7 +851,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    avatar: Attribute.Media;
+    avatar: Attribute.Media<'images' | 'files' | 'videos'>;
     email: Attribute.String;
     articles: Attribute.Relation<
       'api::author.author',
@@ -965,7 +965,7 @@ export interface ApiPressMentionPressMention extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     body: Attribute.RichText;
-    thumbnail: Attribute.Media & Attribute.Required;
+    thumbnail: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

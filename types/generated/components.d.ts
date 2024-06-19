@@ -34,7 +34,7 @@ export interface ComponentsHeroHeader extends Schema.Component {
     icon: 'landscape';
   };
   attributes: {
-    backgroundImage: Attribute.Media;
+    backgroundImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Attribute.String;
     tagline: Attribute.RichText;
     button: Attribute.Component<'components.button'>;
@@ -63,7 +63,7 @@ export interface SharedMedia extends Schema.Component {
     icon: 'file-video';
   };
   attributes: {
-    file: Attribute.Media;
+    file: Attribute.Media<'images' | 'files' | 'videos'>;
   };
 }
 
@@ -102,7 +102,7 @@ export interface SharedSeo extends Schema.Component {
   attributes: {
     metaTitle: Attribute.String & Attribute.Required;
     metaDescription: Attribute.Text & Attribute.Required;
-    shareImage: Attribute.Media;
+    shareImage: Attribute.Media<'images'>;
   };
 }
 
@@ -114,7 +114,7 @@ export interface SharedSlider extends Schema.Component {
     description: '';
   };
   attributes: {
-    files: Attribute.Media;
+    files: Attribute.Media<'images', true>;
   };
 }
 
