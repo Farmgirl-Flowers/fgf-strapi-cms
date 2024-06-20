@@ -10,6 +10,7 @@ import * as logs from "aws-cdk-lib/aws-logs";
 import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
 import * as rds from "aws-cdk-lib/aws-rds";
 import * as s3 from "aws-cdk-lib/aws-s3";
+import * as ses from "aws-cdk-lib/aws-ses";
 import * as ssm from "aws-cdk-lib/aws-ssm";
 import {
   CloudFrontTarget,
@@ -24,6 +25,11 @@ export class AwsCdkStrapiStack extends cdk.Stack {
 
     const cmsUploadsSubdomain = "cms-uploads";
     const databaseName = "fgf_cms";
+    const sesEmailIdentity = ses.EmailIdentity.fromEmailIdentityName(
+      this,
+      "ses",
+      "farmgirlflowers.com",
+    );
 
     // The code that defines your stack goes here
 
@@ -260,13 +266,19 @@ export class AwsCdkStrapiStack extends cdk.Stack {
       value: "https://" + appSubdomain,
     });
 
-    this.setupIAM({ bucket });
+    this.setupIAM({ bucket, sesEmailIdentity });
   }
 
   /**
    * Set up the IAM permissions
    */
-  setupIAM({ bucket }: { bucket: s3.Bucket }) {
+  setupIAM({
+    bucket,
+    sesEmailIdentity,
+  }: {
+    bucket: s3.Bucket;
+    sesEmailIdentity: ses.IEmailIdentity;
+  }) {
     const group = new iam.Group(this, "group", {
       groupName: "strapi-admin",
       path: "/app/",
@@ -279,6 +291,9 @@ export class AwsCdkStrapiStack extends cdk.Stack {
         resources: [bucket.arnForObjects("*")],
       }),
     );
+
+    // Allow the group to send emails via SES
+    sesEmailIdentity.grantSendEmail(group);
 
     // Create user for the admin panel backend
     const adminUser = new iam.User(this, "adminUser", {
