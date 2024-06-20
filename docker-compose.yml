@@ -8,6 +8,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: development
+      args:
+        NODE_ENV: development
     container_name: strapi
     restart: always
     platform: linux/amd64
