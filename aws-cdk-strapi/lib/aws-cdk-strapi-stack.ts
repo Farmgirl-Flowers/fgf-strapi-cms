@@ -1,7 +1,9 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
+
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
+import * as ecr from "aws-cdk-lib/aws-ecr";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
 import * as rds from "aws-cdk-lib/aws-rds";
@@ -75,6 +77,23 @@ export class AwsCdkStrapiStack extends cdk.Stack {
 
     // Allow access to the database from anywhere
     db.connections.allowDefaultPortFromAnyIpv4();
+
+    // Set up an ECR repo to push the Strapi image to
+    const ecrRepo = new ecr.Repository(this, "ecr", {
+      repositoryName: "fgf-cms",
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      // Only keep the most recent images
+      lifecycleRules: [
+        {
+          maxImageCount: 20,
+        },
+      ],
+    });
+
+    // Output the repository URL
+    new cdk.CfnOutput(this, "ecrRepoUrl", {
+      value: ecrRepo.repositoryUri,
+    });
 
     this.setupIAM({ bucket });
   }
