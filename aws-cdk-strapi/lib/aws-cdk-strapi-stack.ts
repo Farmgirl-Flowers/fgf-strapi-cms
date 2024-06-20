@@ -11,7 +11,12 @@ import * as origins from "aws-cdk-lib/aws-cloudfront-origins";
 import * as rds from "aws-cdk-lib/aws-rds";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as ssm from "aws-cdk-lib/aws-ssm";
-import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
+import {
+  CloudFrontTarget,
+  LoadBalancerTarget,
+} from "aws-cdk-lib/aws-route53-targets";
+import { ApplicationLoadBalancer } from "aws-cdk-lib/aws-elasticloadbalancingv2";
+import { ARecord, RecordTarget } from "aws-cdk-lib/aws-route53";
 
 export class AwsCdkStrapiStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -216,6 +221,44 @@ export class AwsCdkStrapiStack extends cdk.Stack {
 
     // Ensure the task role can pull from the ECR repository
     ecrRepo.grantPull(service.taskDefinition.taskRole);
+
+    // Setup load balancer
+    const alb = new ApplicationLoadBalancer(this, "ALB", {
+      vpc: vpc,
+      internetFacing: true,
+      loadBalancerName: "fgf-cms-alb",
+      vpcSubnets: {
+        subnetType: ec2.SubnetType.PUBLIC,
+        subnetFilters: [ec2.SubnetFilter.onePerAz()],
+      },
+    });
+    const listener = alb.addListener("Listener", {
+      port: 443,
+      certificates: [certificate],
+      open: true,
+    });
+    listener.addTargets("CMSService", {
+      port: 80,
+      targets: [service],
+      healthCheck: {
+        path: "/",
+        interval: cdk.Duration.seconds(30),
+        timeout: cdk.Duration.seconds(5),
+      },
+    });
+
+    // Setup ECS service with load balancer under the labelary subdomain
+    const appSubdomain = "cms." + hostedZone.zoneName;
+    new ARecord(this, "AliasRecord", {
+      zone: hostedZone,
+      recordName: appSubdomain,
+      target: RecordTarget.fromAlias(new LoadBalancerTarget(alb)),
+    });
+
+    new cdk.CfnOutput(this, "StrapiURL", {
+      description: "The URL for the Strapi CMS admin web app",
+      value: "https://" + appSubdomain,
+    });
 
     this.setupIAM({ bucket });
   }
