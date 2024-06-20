@@ -198,6 +198,25 @@ export class AwsCdkStrapiStack extends cdk.Stack {
       },
     });
 
+    // Create an ECS Fargate cluster
+    const cluster = new ecs.Cluster(this, "cluster", {
+      vpc: vpc,
+      clusterName: "fgf-cms-cluster",
+      containerInsights: true,
+    });
+
+    const service = new ecs.FargateService(this, "webApp", {
+      serviceName: "web-app",
+      cluster,
+      taskDefinition,
+      desiredCount: 1,
+      assignPublicIp: true, // Ensure they can pull from the ECR repository
+    });
+    service.connections.allowFromAnyIpv4(ec2.Port.tcp(1337));
+
+    // Ensure the task role can pull from the ECR repository
+    ecrRepo.grantPull(service.taskDefinition.taskRole);
+
     this.setupIAM({ bucket });
   }
 
