@@ -63,18 +63,19 @@ export interface ComponentsHeroHeader extends Schema.Component {
   };
 }
 
-export interface ComponentsListPressMentions extends Schema.Component {
-  collectionName: 'components_components_list_press_mentions';
+export interface SectionsList extends Schema.Component {
+  collectionName: 'components_sections_lists';
   info: {
-    displayName: 'List Press Mentions';
+    displayName: 'List';
     icon: 'apps';
+    description: '';
   };
   attributes: {
-    press_mentions: Attribute.Relation<
-      'components.list-press-mentions',
-      'oneToMany',
-      'api::press-mention.press-mention'
-    >;
+    api_id: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
   };
 }
 
@@ -146,7 +147,7 @@ declare module '@strapi/types' {
       'components.button': ComponentsButton;
       'components.content-block': ComponentsContentBlock;
       'components.hero-header': ComponentsHeroHeader;
-      'components.list-press-mentions': ComponentsListPressMentions;
+      'sections.list': SectionsList;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

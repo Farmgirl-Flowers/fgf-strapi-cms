@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_lists",
+  "info": {
+    "displayName": "List",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "api_id": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "regex": "[a-z_]+"
+    }
+  }
+}

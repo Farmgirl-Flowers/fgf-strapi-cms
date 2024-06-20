@@ -24,7 +24,7 @@
         "components.button",
         "components.content-block",
         "components.hero-header",
-        "components.list-press-mentions"
+        "sections.list"
       ],
       "required": true,
       "min": 1
