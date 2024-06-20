@@ -284,16 +284,22 @@ export class AwsCdkStrapiStack extends cdk.Stack {
       path: "/app/",
     });
 
-    // Users in this group have full admin access to the S3 bucket
-    group.addToPolicy(
-      new iam.PolicyStatement({
-        actions: ["s3:*"],
-        resources: [bucket.arnForObjects("*")],
-      }),
-    );
-
-    // Allow the group to send emails via SES
-    sesEmailIdentity.grantSendEmail(group);
+    const policy = new iam.Policy(this, "policy", {
+      policyName: "fgf-cms-web-app-policy",
+      statements: [
+        new iam.PolicyStatement({
+          sid: "AllowS3Access",
+          actions: ["s3:*"],
+          resources: [bucket.arnForObjects("*")],
+        }),
+        new iam.PolicyStatement({
+          sid: "AllowSESEmailSending",
+          actions: ["ses:SendEmail", "ses:SendRawEmail"],
+          resources: ["*"],
+        }),
+      ],
+    });
+    policy.attachToGroup(group);
 
     // Create user for the admin panel backend
     const adminUser = new iam.User(this, "adminUser", {
