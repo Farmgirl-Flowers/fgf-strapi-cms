@@ -25,13 +25,13 @@ services:
     depends_on:
       - db
     volumes:
-      - ./data:/data
-      - ./config:/config
-      - ./extensions:/extensions
-      - ./public:/public
-      - ./src:/src
-      - ./package.json:/package.json
-      - ./package-lock.json:/package-lock.json
+      - ./data:/opt/app/data
+      - ./config:/opt/app/config
+      - ./extensions:/opt/app//extensions
+      - ./public:/opt/app/public
+      - ./src:/opt/app/src
+      - ./package.json:/opt/app/package.json
+      - ./package-lock.json:/opt/app/package-lock.json
 
   db:
     image: postgres:16.3
