@@ -1,0 +1,45 @@
+# Docker Compose file to start Strapi with PostgreSQL
+
+version: "3.9"
+
+services:
+  strapi:
+    # Build the Strapi image from Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: strapi
+    restart: always
+    platform: linux/amd64
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=fgf_strapi_dev
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres123
+      - DATABASE_SSL=false
+      - DATABASE_SCHEMA=public
+    ports:
+      - 1337:1337
+    depends_on:
+      - db
+    volumes:
+      - ./data:/data
+      - ./config:/config
+      - ./extensions:/extensions
+      - ./public:/public
+      - ./src:/src
+      - ./package.json:/package.json
+      - ./package-lock.json:/package-lock.json
+
+  db:
+    image: postgres:16.3
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=fgf_strapi_dev
+    volumes:
+      - ./data/db:/var/lib/postgresql/data

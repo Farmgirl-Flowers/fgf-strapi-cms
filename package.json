@@ -21,10 +21,10 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "develop": "npx strapi develop",
+    "start": "npx strapi start",
+    "build": "npx strapi build",
+    "strapi": "npx strapi"
   },
   "author": {
     "name": "A Strapi developer"
@@ -36,5 +36,8 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.21.5"
+  }
 }
