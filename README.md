@@ -1,4 +1,28 @@
-# 🚀 Getting started with Strapi
+# fgf-strapi-cms
+
+This is the Strapi CMS for Farmgirl Flowers.
+
+## Getting Started
+
+```bash
+docker-compose up
+```
+
+## Deployment
+
+1. Push the docker image to AWS ECR.
+
+```bash
+make docker_push_prod
+```
+
+2. Go into Amazon ECS and deploy the latest image for the `fgf-cms` service within the `fgf-cms-cluster` cluster.
+
+---
+
+# Strapi
+
+## 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
 
