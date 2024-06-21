@@ -24,7 +24,8 @@
         "components.button",
         "components.content-block",
         "components.hero-header",
-        "sections.list"
+        "sections.list",
+        "shared.content-with-image"
       ],
       "required": true,
       "min": 1
@@ -35,6 +36,11 @@
       "unique": true,
       "regex": "[0-9a-z_-]+",
       "minLength": 2
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
