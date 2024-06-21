@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+TOKEN="$(op read op://Engineering/strapi-transfer-token-prod-pull-only/credential --account farmgirl-flowers.1password.com)"
+docker-compose run strapi npx strapi transfer \
+  --from "https://cms.farmgirlflowers.com/admin" \
+  --from-token "$TOKEN" \
+  --force
