@@ -1,8 +1,14 @@
 #!/bin/bash
-
 set -e
-TOKEN="$(op read op://Engineering/strapi-transfer-token-prod-pull-only/credential --account farmgirl-flowers.1password.com)"
+
+TRANSFER_TOKEN="$(op read op://Engineering/strapi-transfer-token-prod-pull-only/credential --account farmgirl-flowers.1password.com)"
+
+# Note: Sometimes the transfer command fails with a
+# ERR_STREAM_WRITE_AFTER_END error, there's an open
+# issue for this in the Strapi Github repository:
+# https://github.com/strapi/strapi/issues/20087
+
 docker-compose run strapi npx strapi transfer \
   --from "https://cms.farmgirlflowers.com/admin" \
-  --from-token "$TOKEN" \
+  --from-token "$TRANSFER_TOKEN" \
   --force
