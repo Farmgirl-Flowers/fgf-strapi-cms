@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_content_with_images",
+  "info": {
+    "displayName": "Content With Image",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
