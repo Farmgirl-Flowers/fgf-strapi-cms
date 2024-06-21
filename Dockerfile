@@ -8,15 +8,14 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /opt/
 COPY package.json package-lock.json ./
-RUN npm install -g node-gyp
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --platform=linuxmusl --arch=x64
-ENV PATH /opt/node_modules/.bin:$PATH
-WORKDIR /opt/app
 # Installing esbuild globally to fix the following error:
 #
 # > Cannot start service: Host version "0.16.17" does not match binary version
 # > "0.21.5"
-RUN ["npm", "install", "esbuild@latest"]
+RUN npm install -g node-gyp esbuild@latest
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --platform=linuxmusl --arch=x64
+ENV PATH /opt/node_modules/.bin:$PATH
+WORKDIR /opt/app
 COPY . .
 RUN ["npm", "run", "build"]
 
