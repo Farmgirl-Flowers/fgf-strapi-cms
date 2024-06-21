@@ -24,6 +24,15 @@
       "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
       "required": true,
       "customField": "plugin::color-picker.color"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "image_left",
+        "image_right"
+      ],
+      "required": true,
+      "default": "image_right"
     }
   }
 }
