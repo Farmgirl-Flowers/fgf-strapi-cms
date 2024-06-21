@@ -2,7 +2,8 @@
   "collectionName": "components_shared_content_with_images",
   "info": {
     "displayName": "Content With Image",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,12 +12,18 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
     }
   }
 }
