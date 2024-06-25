@@ -25,7 +25,8 @@
         "components.content-block",
         "components.hero-header",
         "sections.list",
-        "shared.content-with-image"
+        "shared.content-with-image",
+        "shared.image"
       ],
       "required": true,
       "min": 1
