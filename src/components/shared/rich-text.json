@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_rich_texts",
+  "info": {
+    "displayName": "Rich Text",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
