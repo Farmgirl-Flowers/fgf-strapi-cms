@@ -26,7 +26,8 @@
         "components.hero-header",
         "sections.list",
         "shared.content-with-image",
-        "shared.image"
+        "shared.image",
+        "shared.rich-text"
       ],
       "required": true,
       "min": 1
